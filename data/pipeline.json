@@ -1,0 +1,17 @@
+{
+  "leads": [
+    {
+      "id": "l1",
+      "name": "John Lambert",
+      "company": "Lambert CRE",
+      "industry": "Commercial Real Estate",
+      "status": "qualifying",
+      "notes": "Owner of Lambert CRE Charlotte. Met via roommate's dad. Said he'd love to discuss.",
+      "url": "lambert-cre.com",
+      "updatedAt": "2026-02-23"
+    }
+  ],
+  "mrr": 0,
+  "mrrGoal": 10000,
+  "goalDeadline": "Dec 2026"
+}

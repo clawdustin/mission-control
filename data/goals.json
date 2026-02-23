@@ -1,0 +1,11 @@
+{
+  "goals": [
+    { "id": "g1", "title": "Find 3 paying Healey AI clients", "status": "in-progress", "category": "revenue" },
+    { "id": "g2", "title": "Hit $10k/mo revenue", "status": "backlog", "category": "revenue" },
+    { "id": "g3", "title": "Run Spartan Race (Apr 4)", "status": "in-progress", "category": "fitness" },
+    { "id": "g4", "title": "Sub-2hr half marathon", "status": "backlog", "category": "fitness" },
+    { "id": "g5", "title": "10k followers across platforms", "status": "in-progress", "category": "content" },
+    { "id": "g6", "title": "chef'd App Store approval", "status": "backlog", "category": "product" },
+    { "id": "g7", "title": "Calendar access for Dustin", "status": "done", "category": "ops" }
+  ]
+}

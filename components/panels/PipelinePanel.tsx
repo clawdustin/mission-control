@@ -1,5 +1,9 @@
-import { pipelineData } from "@/lib/mock-data";
-import { Users, TrendingUp } from "lucide-react";
+"use client";
+
+import { usePoll } from "@/lib/use-poll";
+import { PipelineData } from "@/types";
+import { Users, TrendingUp, AlertTriangle } from "lucide-react";
+import { PanelSkeleton } from "@/components/ui/Skeleton";
 
 const stageColors = {
   outreach: "bg-blue-500",
@@ -16,7 +20,22 @@ const stageLabels = {
 };
 
 export function PipelinePanel() {
-  const progressPercent = (pipelineData.mrr / pipelineData.mrrGoal) * 100;
+  const { data, loading, error } = usePoll<PipelineData>("/api/pipeline", 60000);
+
+  if (loading) return <PanelSkeleton />;
+
+  if (error || !data) {
+    return (
+      <div className="rounded-xl border border-[#222] bg-[#111] p-5">
+        <div className="flex items-center gap-2 text-amber-400">
+          <AlertTriangle size={13} />
+          <span className="text-xs">Pipeline unavailable</span>
+        </div>
+      </div>
+    );
+  }
+
+  const progressPercent = (data.mrr / data.mrrGoal) * 100;
 
   return (
     <div className="rounded-xl border border-[#222] bg-[#111] p-5 hover:border-[#333] transition-colors">
@@ -27,15 +46,15 @@ export function PipelinePanel() {
         <div className="flex items-center gap-1.5">
           <Users size={12} className="text-blue-400" />
           <span className="text-xs font-semibold text-[#f5f5f5]">
-            {pipelineData.leads.length} leads
+            {data.leads.length} lead{data.leads.length !== 1 ? "s" : ""}
           </span>
         </div>
       </div>
 
       <div className="space-y-2 mb-4">
-        {pipelineData.leads.map((lead) => (
+        {data.leads.map((lead) => (
           <div
-            key={lead.name}
+            key={lead.id || lead.name}
             className="flex items-center justify-between py-1"
           >
             <div className="flex items-center gap-2">
@@ -60,10 +79,9 @@ export function PipelinePanel() {
           </div>
           <span className="text-xs text-[#555]">
             <span className="text-sm font-semibold text-[#f5f5f5]">
-              ${pipelineData.mrr.toLocaleString()}
-            </span>
-            {" "}
-            / ${pipelineData.mrrGoal.toLocaleString()}
+              ${data.mrr.toLocaleString()}
+            </span>{" "}
+            / ${data.mrrGoal.toLocaleString()}
           </span>
         </div>
         <div className="w-full h-1.5 rounded-full bg-[#1a1a1a] overflow-hidden">
@@ -73,8 +91,7 @@ export function PipelinePanel() {
           />
         </div>
         <p className="text-[10px] text-[#444] mt-1.5">
-          Goal: ${pipelineData.mrrGoal.toLocaleString()}/mo by{" "}
-          {pipelineData.goalDeadline}
+          Goal: ${data.mrrGoal.toLocaleString()}/mo by {data.goalDeadline}
         </p>
       </div>
     </div>

@@ -1,0 +1,9 @@
+{
+  "events": [
+    { "id": "f1", "message": "Mission Control v2 deployed", "timestamp": "2026-02-23T17:36:00Z", "type": "deploy" },
+    { "id": "f2", "message": "Claude Code authenticated", "timestamp": "2026-02-23T15:47:00Z", "type": "auth" },
+    { "id": "f3", "message": "Gemini memory search online", "timestamp": "2026-02-23T16:41:00Z", "type": "system" },
+    { "id": "f4", "message": "Email sent to Spencer", "timestamp": "2026-02-23T15:28:00Z", "type": "email" },
+    { "id": "f5", "message": "Dustin came online", "timestamp": "2026-02-23T14:18:00Z", "type": "system" }
+  ]
+}

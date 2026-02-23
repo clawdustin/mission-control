@@ -1,0 +1,14 @@
+{
+  "agents": [
+    {
+      "id": "dustin",
+      "name": "Dustin",
+      "role": "Chief of Staff",
+      "description": "Superintelligent executive assistant",
+      "emoji": "\ud83e\udde0",
+      "status": "active",
+      "level": 0,
+      "parentId": null
+    }
+  ]
+}

@@ -1,5 +1,9 @@
-import { goals } from "@/lib/mock-data";
-import { Circle, Clock, CheckCircle2 } from "lucide-react";
+"use client";
+
+import { usePoll } from "@/lib/use-poll";
+import { Goal } from "@/types";
+import { Circle, Clock, CheckCircle2, AlertTriangle } from "lucide-react";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 const columns = [
   {
@@ -34,6 +38,38 @@ const categoryColors: Record<string, string> = {
 };
 
 export function GoalsKanban() {
+  const { data, loading, error } = usePoll<{ goals: Goal[] }>("/api/goals", 60000);
+
+  if (loading) {
+    return (
+      <div className="rounded-xl border border-[#222] bg-[#111] p-5">
+        <Skeleton className="h-3 w-24 mb-4" />
+        <div className="grid grid-cols-3 gap-4">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="space-y-2">
+              <Skeleton className="h-3 w-20" />
+              <Skeleton className="h-16 w-full" />
+              <Skeleton className="h-16 w-full" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <div className="rounded-xl border border-[#222] bg-[#111] p-5">
+        <div className="flex items-center gap-2 text-amber-400">
+          <AlertTriangle size={13} />
+          <span className="text-xs">Goals unavailable</span>
+        </div>
+      </div>
+    );
+  }
+
+  const goals = data.goals;
+
   return (
     <div className="rounded-xl border border-[#222] bg-[#111] p-5 hover:border-[#333] transition-colors">
       <h3 className="text-xs font-semibold tracking-wider uppercase text-[#555] mb-4">

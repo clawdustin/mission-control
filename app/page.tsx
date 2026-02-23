@@ -9,13 +9,15 @@ import { PipelinePanel } from "@/components/panels/PipelinePanel";
 import { ServicesPanel } from "@/components/panels/ServicesPanel";
 import { ScheduledPanel } from "@/components/panels/ScheduledPanel";
 import { GoalsKanban } from "@/components/goals/GoalsKanban";
-import { LayoutDashboard, GitBranch, Radar, Target } from "lucide-react";
+import { OrgChart } from "@/components/org/OrgChart";
+import { LayoutDashboard, GitBranch, Radar, Target, Network } from "lucide-react";
 
 const navItems = [
   { key: "dashboard", label: "Dashboard", icon: LayoutDashboard },
   { key: "pipeline", label: "Pipeline", icon: GitBranch },
   { key: "intel", label: "Intel", icon: Radar },
   { key: "goals", label: "Goals", icon: Target },
+  { key: "org", label: "Org", icon: Network },
 ];
 
 export default function Home() {
@@ -52,16 +54,35 @@ export default function Home() {
 
           {/* Content Area */}
           <div className="flex-1 overflow-y-auto p-6 space-y-6">
-            {/* 4-Panel Grid */}
-            <div className="grid grid-cols-4 gap-4">
-              <ActivityPanel />
-              <PipelinePanel />
-              <ServicesPanel />
-              <ScheduledPanel />
-            </div>
+            {activeNav === "dashboard" && (
+              <>
+                <div className="grid grid-cols-4 gap-4">
+                  <ActivityPanel />
+                  <PipelinePanel />
+                  <ServicesPanel />
+                  <ScheduledPanel />
+                </div>
+                <GoalsKanban />
+              </>
+            )}
 
-            {/* Goals Kanban */}
-            <GoalsKanban />
+            {activeNav === "pipeline" && (
+              <div className="grid grid-cols-2 gap-4">
+                <PipelinePanel />
+                <ActivityPanel />
+              </div>
+            )}
+
+            {activeNav === "intel" && (
+              <div className="grid grid-cols-2 gap-4">
+                <ServicesPanel />
+                <ActivityPanel />
+              </div>
+            )}
+
+            {activeNav === "goals" && <GoalsKanban />}
+
+            {activeNav === "org" && <OrgChart />}
           </div>
         </main>
 

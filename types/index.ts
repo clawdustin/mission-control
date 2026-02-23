@@ -14,9 +14,14 @@ export interface ActivityStats {
 }
 
 export interface PipelineLead {
+  id: string;
   name: string;
+  company: string;
   industry: string;
   status: "outreach" | "qualifying" | "proposal" | "closed";
+  notes: string;
+  url: string;
+  updatedAt: string;
 }
 
 export interface PipelineData {
@@ -29,7 +34,7 @@ export interface PipelineData {
 export interface ServiceStatus {
   name: string;
   status: "up" | "down" | "idle";
-  icon: string;
+  latencyMs?: number;
 }
 
 export interface ScheduledEvent {
@@ -49,5 +54,16 @@ export interface FeedEvent {
   id: string;
   message: string;
   timestamp: string;
-  type: "system" | "email" | "connection" | "auth";
+  type: "system" | "email" | "connection" | "auth" | "deploy";
+}
+
+export interface Agent {
+  id: string;
+  name: string;
+  role: string;
+  description: string;
+  emoji: string;
+  status: "active" | "idle" | "offline";
+  level: number;
+  parentId: string | null;
 }
