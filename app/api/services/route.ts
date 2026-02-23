@@ -28,6 +28,7 @@ async function pingService(
 
 export async function GET() {
   const xToken = process.env.X_BEARER_TOKEN;
+  const ghToken = process.env.GITHUB_TOKEN;
 
   const checks = await Promise.all([
     pingService("Gmail", "https://gmail.googleapis.com/$discovery/rest?version=v1"),
@@ -37,7 +38,14 @@ export async function GET() {
       xToken ? { Authorization: `Bearer ${xToken}` } : undefined
     ),
     pingService("Brave Search", "https://api.search.brave.com/"),
-    // Claude Code and Memory Search are local — always UP
+    pingService(
+      "GitHub",
+      "https://api.github.com/users/clawdustin",
+      ghToken
+        ? { Authorization: `token ${ghToken}`, Accept: "application/vnd.github+json" }
+        : { Accept: "application/vnd.github+json" }
+    ),
+    pingService("Tailscale", "https://login.tailscale.com/api/v2"),
   ]);
 
   const services: ServiceCheck[] = [

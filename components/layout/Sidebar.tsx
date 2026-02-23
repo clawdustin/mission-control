@@ -29,7 +29,7 @@ export function Sidebar() {
           onClick={() => setActiveArea(area.id)}
           className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all duration-200 border ${
             activeArea === area.id
-              ? priorityColors[area.priority]
+              ? priorityColors[area.priority as keyof typeof priorityColors]
               : "border-transparent hover:bg-[#111] hover:border-[#222]"
           }`}
         >
@@ -40,7 +40,7 @@ export function Sidebar() {
                 {area.name}
               </span>
               <span
-                className={`w-1.5 h-1.5 rounded-full ${priorityDots[area.priority]}`}
+                className={`w-1.5 h-1.5 rounded-full ${priorityDots[area.priority as keyof typeof priorityDots]}`}
               />
             </div>
             <span className="text-[10px] text-[#555] truncate block">

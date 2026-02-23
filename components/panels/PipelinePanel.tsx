@@ -5,18 +5,22 @@ import { PipelineData } from "@/types";
 import { Users, TrendingUp, AlertTriangle } from "lucide-react";
 import { PanelSkeleton } from "@/components/ui/Skeleton";
 
-const stageColors = {
+const stageColors: Record<string, string> = {
   outreach: "bg-blue-500",
   qualifying: "bg-amber-500",
   proposal: "bg-purple-500",
-  closed: "bg-green-500",
+  negotiating: "bg-orange-500",
+  "closed-won": "bg-green-500",
+  "closed-lost": "bg-red-500",
 };
 
-const stageLabels = {
+const stageLabels: Record<string, string> = {
   outreach: "Outreach",
   qualifying: "Qualifying",
   proposal: "Proposal",
-  closed: "Closed",
+  negotiating: "Negotiating",
+  "closed-won": "Closed Won",
+  "closed-lost": "Closed Lost",
 };
 
 export function PipelinePanel() {

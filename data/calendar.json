@@ -1,0 +1,8 @@
+{
+  "events": [
+    { "id": "e1", "title": "Spartan Race", "date": "2026-04-04", "type": "fitness" },
+    { "id": "e2", "title": "5yr Anniversary (Ryan)", "date": "2026-05-17", "type": "personal" },
+    { "id": "e3", "title": "Role Rotation", "date": "2026-06-01", "type": "career" },
+    { "id": "e4", "title": "Half Marathon Goal Deadline", "date": "2026-12-31", "type": "fitness" }
+  ]
+}

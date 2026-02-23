@@ -1,0 +1,13 @@
+{
+  "automations": [
+    {
+      "id": "a1",
+      "name": "Heartbeat check",
+      "schedule": "0 * * * *",
+      "description": "Hourly check for emails, calendar, notifications",
+      "status": "active",
+      "lastRun": "2026-02-23T13:00:00Z",
+      "nextRun": "2026-02-23T14:00:00Z"
+    }
+  ]
+}

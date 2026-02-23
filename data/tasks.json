@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "Follow up with John Lambert",
+      "assignee": "spencer",
+      "status": "in-progress",
+      "category": "healey-ai",
+      "createdAt": "2026-02-23"
+    },
+    {
+      "id": "t2",
+      "title": "Set up Supabase for kanban",
+      "assignee": "dustin",
+      "status": "backlog",
+      "category": "ops",
+      "createdAt": "2026-02-23"
+    },
+    {
+      "id": "t3",
+      "title": "Build Lambert CRE prototype site",
+      "assignee": "dustin",
+      "status": "backlog",
+      "category": "healey-ai",
+      "createdAt": "2026-02-23"
+    },
+    {
+      "id": "t4",
+      "title": "Post first X thread about Renewal Lab",
+      "assignee": "spencer",
+      "status": "backlog",
+      "category": "content",
+      "createdAt": "2026-02-23"
+    }
+  ]
+}
